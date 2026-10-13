@@ -75,6 +75,10 @@ st.markdown("""
   <p><b>Brands:</b> post a clipping campaign with a rate per 1,000 views.
   <b>Clippers:</b> cut clips, post them on TikTok / Shorts / Reels, submit the link —
   and earn for every verified view.</p>
+  <a href="https://clipza.streamlit.app/" target="_blank"
+     style="display:inline-block; margin-top:14px; background:linear-gradient(135deg,#ffe08a,#f5c518);
+     color:#161105; font-weight:800; border-radius:10px; padding:9px 20px; text-decoration:none;">
+     ✂️ Need clips? Cut them free with Clipza →</a>
 </div>
 """, unsafe_allow_html=True)
 
@@ -123,6 +127,10 @@ if role.startswith("🔍"):
           {f"<div class='cr-meta' style='margin-top:8px;'>📎 Source material: <a href='{c['materials_url']}'>{c['materials_url']}</a></div>" if c['materials_url'] else ""}
           <div class="cr-meta" style="margin-top:8px;">👁 {stats['total_views']:,} verified views •
           {stats['submissions']} submissions • ${stats['spent']:.2f} paid out</div>
+          <a href="https://clipza.streamlit.app/" target="_blank"
+             style="display:inline-block; margin-top:10px; border:1px solid rgba(245,197,24,0.5);
+             color:#ffd94d; font-weight:700; border-radius:9px; padding:6px 14px;
+             text-decoration:none; font-size:0.85rem;">✂️ Cut clips for this campaign with Clipza →</a>
         </div>
         """, unsafe_allow_html=True)
 
@@ -233,6 +241,10 @@ elif role.startswith("✂️"):
             c = cmap[sel]
             st.markdown(f"<span class='cr-meta'>Min {c['min_views']:,} views to count • "
                         f"Brand: {c['brand_name']}</span>", unsafe_allow_html=True)
+            st.markdown("<span class='cr-meta'>✂️ No clip yet? "
+                        "<a href='https://clipza.streamlit.app/' target='_blank'>"
+                        "Cut one free with Clipza</a>, post it, then submit the link below.</span>",
+                        unsafe_allow_html=True)
             with st.form("submit"):
                 clipper = st.text_input("Your clipper name")
                 platform = st.selectbox("Platform", ["TikTok", "YouTube Shorts",
